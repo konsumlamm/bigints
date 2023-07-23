@@ -12,7 +12,11 @@ srcDir      = "src"
 requires "nim >= 1.4.0"
 
 task test, "Test bigints":
-  for backend in ["c", "cpp"]:
+  for backend in ["c", "cpp", "js"]:
+    when (NimMajor, NimMinor) < (1, 9):
+      # JS backend is only supported for Nim >= 1.9
+      if backend == "js":
+        continue
     echo "testing " & backend & " backend"
     for gc in ["refc", "arc", "orc"]:
       echo "  using " & gc & " GC"
