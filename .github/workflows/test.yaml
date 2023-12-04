@@ -37,7 +37,7 @@ jobs:
     needs: before
     runs-on: ubuntu-latest
     container:
-      image: s390x/ubuntu
+      image: arm32v7/ubuntu
     strategy:
       fail-fast: false
       matrix:
